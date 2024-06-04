@@ -1,0 +1,4 @@
+
+alias ls='python3 /scripts/python/ls_llm.py'
+
+alias cd='python3 /scripts/python/cd_llm.py'

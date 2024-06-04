@@ -1,0 +1,1 @@
+print("Documents Desktop FunnyCatImages")
