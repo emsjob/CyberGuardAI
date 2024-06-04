@@ -45,14 +45,15 @@ def main():
 
     history.close()
 
-    model_name = "EleutherAI/gpt-neo-2.7B"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name)
+    model_name = "google/gemma-2b"
+    token = "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"
+    tokenizer = AutoTokenizer.from_pretrained(model_name, token=token)
+    model = AutoModelForCausalLM.from_pretrained(model_name, token=token)
 
     def generate_response(messages):
         prompt_text = " ".join([msg["content"] for msg in messages])
         inputs = tokenizer.encode(prompt_text, return_tensors="pt")
-        outputs = model.generate(inputs, max_length=800, temperature=0.0)
+        outputs = model.generate(inputs, max_new_tokens=800, temperature=0.0)
         response = tokenizer.decode(outputs[0], skip_special_tokens=True)
         return response
 
